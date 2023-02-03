@@ -17,7 +17,17 @@
 ## charactor
 * human (gardener/adventurer)
 
+## nutural & env (?)
+rounded leaves, brighter colors
+### types
+* small trees & bushes/hedges
+* flowers
+* water lily (cure?)
+* rocks
+* dead trees / fallen branches
+
 ## enemies
+sharper leaves, darker colors
 ### types
 #### easy
 * cattails (tall)
