@@ -11,8 +11,7 @@ void OnCollisionEnter2D(Collision2D otherCollision){
         Transform player = other.transform;
 
         if(player.GetComponent<PlayerMovement>().state == SwingState.Grappling){
-            print("swung into");
-            uprootable=true;
+            SwungInto();
         }
         else{
             print("hit side");
@@ -21,5 +20,12 @@ void OnCollisionEnter2D(Collision2D otherCollision){
         // if(state == SwingState.Grappling) DeattachHook();
         // state = SwingState.Walking;
     }
+
+
+    }
+
+    public void SwungInto(){
+        print("swung into");
+        uprootable=true;
     }
 }
