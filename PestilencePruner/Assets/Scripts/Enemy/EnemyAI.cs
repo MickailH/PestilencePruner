@@ -29,7 +29,7 @@ public class EnemyAI : MonoBehaviour
 {
 
     private IState currentState;
-    private Dictionary<StateType, IState> states = new Dictionary<StateType, IState>();
+    public Dictionary<StateType, IState> states = new Dictionary<StateType, IState>();
 
     public Parameter parameter;
     public bool uprootable = false;
