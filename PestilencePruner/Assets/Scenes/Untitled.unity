@@ -364,11 +364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 15
-  HP: 3
-  currentHP: 3
-  healthBar: {fileID: 193272905}
   inputX: 0
-  pauseMenu: {fileID: 1977287620}
   state: 0
   joint: {fileID: 274452327}
   grappleLine: {fileID: 274452326}
@@ -668,6 +664,23 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &491529251 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8683403585275011943, guid: 4e1ecfa03df269e4588fb8313af9b2b3, type: 3}
+  m_PrefabInstance: {fileID: 8683403584734906643}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &491529255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491529251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b1e5636941c464094aefa5d71af980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &535485858
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,6 +692,7 @@ GameObject:
   - component: {fileID: 535485861}
   - component: {fileID: 535485860}
   - component: {fileID: 535485859}
+  - component: {fileID: 535485862}
   m_Layer: 0
   m_Name: Square
   m_TagString: Floor
@@ -779,6 +793,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &535485862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535485858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b1e5636941c464094aefa5d71af980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &718329323 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5288198016560519752, guid: d14ea72819bb24a4ba9dd059c89a23d5, type: 3}
+  m_PrefabInstance: {fileID: 5288198016028153372}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &718329327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718329323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b1e5636941c464094aefa5d71af980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &779308009
 GameObject:
   m_ObjectHideFlags: 0
