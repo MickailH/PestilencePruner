@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float inputX;
 
 
-    public bool onGround = true;
+    // public bool onGround = true;
 
 
     public SwingState state; 
@@ -141,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
         grappleLine.enabled = true;
     }
 
-    private void DeattachHook(){
+    public void DeattachHook(){
         joint.enabled = false;
         grappleLine.enabled = false;
     }
