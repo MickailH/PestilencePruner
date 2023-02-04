@@ -12,3 +12,4 @@
 * ![](foreground-rock2_L.png)
 * ![](foreground-rock3_L.png)
 * ![](foreground-rock4_L.png)
+* ![](foreground-cattail1_L.png)
