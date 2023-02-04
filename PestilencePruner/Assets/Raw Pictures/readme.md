@@ -13,6 +13,6 @@
 * ![](foreground-rock4_L.png)
 ## plants
 * ![](foreground-vine1_L.png)
+* ![](foreground-cattail1_L.png)
 ## drops
 * ![](foreground-seeds1_L.png)
-* ![](foreground-cattail1_L.png)
