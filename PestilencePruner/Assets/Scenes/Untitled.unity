@@ -494,6 +494,8 @@ GameObject:
   - component: {fileID: 449730208}
   - component: {fileID: 449730213}
   - component: {fileID: 449730212}
+  - component: {fileID: 449730214}
+  - component: {fileID: 449730215}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -597,7 +599,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 449730207}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92635f98026b87d4d8130459afef1548, type: 3}
   m_Name: 
@@ -619,6 +621,7 @@ MonoBehaviour:
       m_Bits: 128
     animator: {fileID: 0}
     getHit: 0
+  uprootable: 0
 --- !u!61 &449730213
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -645,6 +648,66 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.014216, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &449730214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449730207}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5836034d0690b4b41b3f1a272cbb5333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parameter:
+    health: 0
+    moveSpeed: 5
+    chaseSpeed: 7
+    idleTime: 1
+    patrolPoints:
+    - {fileID: 797097271}
+    - {fileID: 771384845}
+    chasePoints:
+    - {fileID: 1821305003}
+    - {fileID: 1851337774}
+    target: {fileID: 0}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 0
+    animator: {fileID: 0}
+    getHit: 0
+  uprootable: 0
+--- !u!114 &449730215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449730207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd254620d785554ca49a2699587d447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parameter:
+    health: 0
+    moveSpeed: 5
+    chaseSpeed: 7
+    idleTime: 1
+    patrolPoints:
+    - {fileID: 797097271}
+    - {fileID: 771384845}
+    chasePoints:
+    - {fileID: 1821305003}
+    - {fileID: 1851337774}
+    target: {fileID: 0}
+    targetLayer:
+      serializedVersion: 2
+      m_Bits: 0
+    animator: {fileID: 0}
+    getHit: 0
+  uprootable: 0
 --- !u!1 &450036632
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,6 +909,7 @@ GameObject:
   - component: {fileID: 541805655}
   - component: {fileID: 541805654}
   - component: {fileID: 541805653}
+  - component: {fileID: 541805656}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Floor
@@ -946,6 +1010,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &541805656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541805652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b1e5636941c464094aefa5d71af980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &771384844
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,7 +1163,7 @@ Transform:
   m_GameObject: {fileID: 858150667}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.014, y: 4.48, z: 0}
-  m_LocalScale: {x: 19.7119, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1347,6 +1423,7 @@ GameObject:
   - component: {fileID: 1624369783}
   - component: {fileID: 1624369782}
   - component: {fileID: 1624369781}
+  - component: {fileID: 1624369784}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Floor
@@ -1447,6 +1524,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1624369784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624369780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b1e5636941c464094aefa5d71af980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1639048714
 PrefabInstance:
   m_ObjectHideFlags: 0

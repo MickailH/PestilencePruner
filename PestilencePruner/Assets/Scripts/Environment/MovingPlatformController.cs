@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingPlatformController : MonoBehaviour
+public class MovingPlatformController : PlatformController
 {
     public float speed = 5.0f;
     public float waitTime = 0.5f;

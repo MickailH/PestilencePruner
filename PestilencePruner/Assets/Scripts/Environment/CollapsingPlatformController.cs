@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollapsingPlatformController : MonoBehaviour
+public class CollapsingPlatformController : PlatformController
 {
     private Rigidbody2D rb;
     private Collider2D collider;

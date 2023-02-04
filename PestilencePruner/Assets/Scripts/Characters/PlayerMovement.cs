@@ -115,13 +115,19 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D other){
-        print("hit");
-        if(other.CompareTag("Floor")){
-            if(state == SwingState.Grappling) DeattachHook();
-            state = SwingState.Walking;
-        }
+    public void HitGround(){
+        print("hitground");
+        if(state == SwingState.Grappling) DeattachHook();
+        state = SwingState.Walking;
     }
+
+    // void OnTriggerEnter2D(Collider2D other){
+    //     print("hit");
+    //     if(other.CompareTag("Floor")){
+    //         if(state == SwingState.Grappling) DeattachHook();
+    //         state = SwingState.Walking;
+    //     }
+    // }
 
 
     private bool HookObjFromMousePos(Vector2 mousepos){
@@ -192,6 +198,7 @@ public class PlayerMovement : MonoBehaviour
     public void Whip(Transform tr){
         // if(tr.GetComponent<EnemyAI>())
         print("whip");
+        tr.GetComponent<EnemyAI>().Whipped();
     }
 
     private Vector2 getMousePos()

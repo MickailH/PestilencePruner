@@ -23,6 +23,7 @@ public class Parameter
     //public float attackArea;
     public Animator animator;
     public bool getHit;
+
 }
 public class EnemyAI : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class EnemyAI : MonoBehaviour
     private Dictionary<StateType, IState> states = new Dictionary<StateType, IState>();
 
     public Parameter parameter;
+    public bool uprootable = false;
     void Start()
     {
         states.Add(StateType.Idle, new IdleState(this));
@@ -54,6 +56,14 @@ public class EnemyAI : MonoBehaviour
         {
             parameter.getHit = true;
         }
+    }
+
+    public void Whipped(){
+        if(uprootable) Uproot();
+    }
+
+    public void Uproot(){
+        
     }
 
     public void TransitionState(StateType type)
