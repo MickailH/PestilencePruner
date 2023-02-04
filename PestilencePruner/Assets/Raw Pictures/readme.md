@@ -2,7 +2,6 @@
 * ![](background-grass_L.png)
 * ![](background-sky_L.png)
 * ![](background-tree1_L.png)
-* ![](background-tree2_L.png)
 # foregrounds
 ## platform
 * ![](foreground-platform_L.png)
