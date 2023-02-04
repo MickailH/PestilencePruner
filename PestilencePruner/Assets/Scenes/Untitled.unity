@@ -368,6 +368,7 @@ MonoBehaviour:
   currentHP: 3
   healthBar: {fileID: 193272905}
   inputX: 0
+  pauseMenu: {fileID: 1977287620}
   state: 0
   joint: {fileID: 274452327}
   grappleLine: {fileID: 274452326}
@@ -1941,7 +1942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1788853761
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     // public bool onGround = true;
-
+    [SerializeField] GameObject pauseMenu;
 
     public SwingState state; 
 
@@ -61,6 +61,19 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 state = SwingState.InAir;
             }
+
+            if(Input.GetKeyDown("escape"))
+                {
+                    if (pauseMenu.activeSelf)
+                    {
+                        pauseMenu.SetActive(false);
+                        Time.timeScale = 1f;
+                    } else
+                    {
+                        pauseMenu.SetActive(true);
+                        Time.timeScale = 0f;
+                    }
+                }
             // if(Input.GetKeyDown("space") && onGround) {
             //     onGround = false;
             //     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
