@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     public SpringJoint2D joint;
     private Vector2 hookPos;
+    private Transform hookTransf;
 
     public LineRenderer grappleLine;
     // Start is called before the first frame update
@@ -63,9 +64,26 @@ public class PlayerMovement : MonoBehaviour
 
             case SwingState.InAir:
             if(Input.GetMouseButtonDown(0)){
-                if(HookPosFromMousePos(getMousePos())){
-                    AttachHook(hookPos);
-                    state = SwingState.Grappling;
+                if(HookObjFromMousePos(getMousePos())){
+
+                    if(hookTransf.CompareTag("Platform")){
+                        if(transform.position.y < hookTransf.transform.position.y)//if ceiling is above you TODO: suspected bug here, when player and ceiling are close together
+                        AttachHook(hookPos);
+                    }
+
+                    if(hookTransf.CompareTag("Enemy")){
+                        float angle = Vector2.Angle(Vector2.up, transform.position - hookTransf.transform.position);
+                        print(angle);
+                        if(transform.position.y > hookTransf.transform.position.y && angle < 45)
+                        Whip(hookTransf);   
+                    }
+
+
+
+                    // if(hookPos.y > transform.position.y)//swing
+                    // else //uproot
+                    // AttachHook(hookPos);
+                    
                 }
             }
             else    rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
@@ -106,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private bool HookPosFromMousePos(Vector2 mousepos){
+    private bool HookObjFromMousePos(Vector2 mousepos){
         //max dist in 16:9 is 178:100, max diagonal dist 204
         //player will almost always be in centre of the screen, max dist from 89:100 is 134
         //I want it to get the closest point to the mousepos along mouse Dir Vector that is on a building collider
@@ -121,11 +139,34 @@ public class PlayerMovement : MonoBehaviour
         
         var possibleCastResults =  castResults.Where(cast => cast.collider != null);
         if(possibleCastResults.Count() > 0){
-            hookPos = possibleCastResults.OrderBy(cast => cast.distance).First().point;
+            RaycastHit2D hit = possibleCastResults.OrderBy(cast => cast.distance).First();
+            hookPos = hit.point;
+            hookTransf = hit.collider.transform;
             return true;
         }
         return false;
     }
+
+    // private bool HookPosFromMousePos(Vector2 mousepos){
+    //     //max dist in 16:9 is 178:100, max diagonal dist 204
+    //     //player will almost always be in centre of the screen, max dist from 89:100 is 134
+    //     //I want it to get the closest point to the mousepos along mouse Dir Vector that is on a building collider
+    //     Vector2 player2mouse = mousepos - rb.position;
+
+    //     List<RaycastHit2D> castResults = new List<RaycastHit2D>();
+    //     // castResults.Add(Physics2D.Raycast(mousepos, mouse2player, mouse2player.magnitude, LayerMask.GetMask("Brick")));// distance limited to not go behind the player
+    //     // castResults.Add(Physics2D.Linecast(mousepos, rb.position, LayerMask.GetMask("Brick")));// distance limited to not go behind the player
+
+    //     castResults.Add(Physics2D.Linecast(mousepos, rb.position));// distance limited to not go behind the player
+    //     // castResults.Add(Physics2D.Raycast(mousepos, player2mouse, 130f - player2mouse.magnitude , LayerMask.GetMask("Brick")));
+        
+    //     var possibleCastResults =  castResults.Where(cast => cast.collider != null);
+    //     if(possibleCastResults.Count() > 0){
+    //         hookPos = possibleCastResults.OrderBy(cast => cast.distance).First().point;
+    //         return true;
+    //     }
+    //     return false;
+    // }
 
     // private bool TempHook(Vector2 mousepos){
     //     hookPos = mousepos;
@@ -139,11 +180,18 @@ public class PlayerMovement : MonoBehaviour
         grappleLine.SetPosition(0, rb.position);
         grappleLine.SetPosition(1, globalPos);
         grappleLine.enabled = true;
+
+        state = SwingState.Grappling;
     }
 
     public void DeattachHook(){
         joint.enabled = false;
         grappleLine.enabled = false;
+    }
+
+    public void Whip(Transform tr){
+        // if(tr.GetComponent<EnemyAI>())
+        print("whip");
     }
 
     private Vector2 getMousePos()
