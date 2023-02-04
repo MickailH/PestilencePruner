@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Linq;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5;
     public float jumpForce = 5;
+    public int HP = 3;
+    public int currentHP = 3;
+    public Slider healthBar;
     private Rigidbody2D rb;
     private Collider2D collider;
     private Vector2 movement;
@@ -14,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     // public bool onGround = true;
-
+    [SerializeField] GameObject pauseMenu;
 
     public SwingState state; 
 
@@ -29,6 +33,9 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
+        currentHP = HP;
+        healthBar.maxValue = HP;
+        healthBar.value = HP;
         state = SwingState.Walking;
     }
 
@@ -54,6 +61,19 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 state = SwingState.InAir;
             }
+
+            if(Input.GetKeyDown("escape"))
+                {
+                    if (pauseMenu.activeSelf)
+                    {
+                        pauseMenu.SetActive(false);
+                        Time.timeScale = 1f;
+                    } else
+                    {
+                        pauseMenu.SetActive(true);
+                        Time.timeScale = 0f;
+                    }
+                }
             // if(Input.GetKeyDown("space") && onGround) {
             //     onGround = false;
             //     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -120,14 +140,52 @@ public class PlayerMovement : MonoBehaviour
         if(state == SwingState.Grappling) DeattachHook();
         state = SwingState.Walking;
     }
+    
+    void OnTriggerEnter2D(Collider2D other){
+        print("hit");
+        if(other.CompareTag("Floor")){
+            if(state == SwingState.Grappling) DeattachHook();
+            state = SwingState.Walking;
+        }
+        if (other.CompareTag("Enemy"))
+        {
+            takeDamage();
+        }
+    }
 
-    // void OnTriggerEnter2D(Collider2D other){
-    //     print("hit");
-    //     if(other.CompareTag("Floor")){
-    //         if(state == SwingState.Grappling) DeattachHook();
-    //         state = SwingState.Walking;
-    //     }
-    // }
+
+    private void takeDamage()
+    {
+        if (currentHP <= 0)
+        {
+            //GameOver();
+        } else
+        {
+            //StartCoroutine(Invulnerability());
+            currentHP = currentHP -= 1;
+            healthBar.value = currentHP;
+           // healthBar.SetHealth(currentHealth);
+        }
+
+    }
+
+    private void SetMaxHealth(int health)
+    {
+        healthBar.maxValue = health;
+        healthBar.value = health;
+    }
+
+    private void SetHealth(int health)
+    {
+        healthBar.value = health;
+    }
+
+    /*
+    IEnumerator Invulnerability()
+    {
+        yield return new WaitForSeconds(1);
+    }
+    */
 
 
     private bool HookObjFromMousePos(Vector2 mousepos){
