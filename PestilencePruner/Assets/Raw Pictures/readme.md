@@ -7,6 +7,7 @@
 ## platform
 * ![](foreground-platform_L.png)
 ## scene assets
+* ![](foreground-vine1_L.png)
 * ![](foreground-rock1_L.png)
 * ![](foreground-rock2_L.png)
 * ![](foreground-rock3_L.png)
