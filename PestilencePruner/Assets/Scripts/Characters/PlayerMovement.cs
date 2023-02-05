@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Linq;
 
 public class PlayerMovement : MonoBehaviour
@@ -16,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movement;
     public float inputX;
 
-
+    public static PlayerMovement instance;
     // public bool onGround = true;
     [SerializeField] GameObject pauseMenu;
 
@@ -28,6 +29,13 @@ public class PlayerMovement : MonoBehaviour
     private Transform hookTransf;
 
     public LineRenderer grappleLine;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -148,7 +156,23 @@ public class PlayerMovement : MonoBehaviour
         // }
         if (other.CompareTag("Enemy"))
         {
+            Transform Enemy = other.transform;
+
+            if (Enemy.position.y + other.bounds.extents.y < transform.position.y - transform.GetComponent<Collider2D>().bounds.extents.y)
+            {
+                if (other.GetComponent<AI_2>() != null)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                    state = SwingState.InAir;
+                } else
+                {
+                    print("jump reset");
+                    HitGround();
+                }
+            }
+            else { 
             takeDamage();
+        }
         }
     }
 
@@ -158,6 +182,8 @@ public class PlayerMovement : MonoBehaviour
         if (currentHP <= 0)
         {
             //GameOver();
+            SceneManager.LoadScene(0);
+
         } else
         {
             //StartCoroutine(Invulnerability());
@@ -265,6 +291,18 @@ public class PlayerMovement : MonoBehaviour
         Vector2 worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
 
         return worldPosition;
+    }
+
+    public IEnumerator Knockback(float duration, float power, Transform obj)
+    {
+        float KBtimer = 0;
+        while (duration > KBtimer)
+        {
+            KBtimer += Time.deltaTime;
+            Vector2 direction = (obj.transform.position - this.transform.position).normalized;
+            rb.AddForce(-direction * power);
+        }
+        yield return 0;
     }
 
 }

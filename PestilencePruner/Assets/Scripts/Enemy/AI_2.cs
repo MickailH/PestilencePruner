@@ -18,7 +18,8 @@ void OnCollisionEnter2D(Collision2D otherCollision){
             else
             {
             print("hit side");
-        }
+                StartCoroutine(PlayerMovement.instance.Knockback(parameter.KBduration, parameter.KBpower, this.transform));
+            }
 
         // if(state == SwingState.Grappling) DeattachHook();
         // state = SwingState.Walking;
@@ -28,7 +29,8 @@ void OnCollisionEnter2D(Collision2D otherCollision){
     private void JumpedOnto(Collider2D other)
     {
         print("jumped on head");
-        other.GetComponent<PlayerMovement>().state = SwingState.Walking;
+        gameObject.GetComponent<EnemyAI>().parameter.moveSpeed = 0;
+        gameObject.GetComponent<EnemyAI>().parameter.chaseSpeed = 0;
         uprootable = true;
     }
 }

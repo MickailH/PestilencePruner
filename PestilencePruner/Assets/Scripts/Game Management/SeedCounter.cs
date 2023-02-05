@@ -10,6 +10,7 @@ public class SeedCounter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        seedAmount = 0;
         text = GetComponent<TMP_Text>();
     }
 

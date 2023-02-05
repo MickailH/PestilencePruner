@@ -15,7 +15,8 @@ void OnCollisionEnter2D(Collision2D otherCollision){
         }
         else{
             print("hit side");
-        }
+            StartCoroutine(PlayerMovement.instance.Knockback(parameter.KBduration, parameter.KBpower, this.transform));
+            }
 
         // if(state == SwingState.Grappling) DeattachHook();
         // state = SwingState.Walking;
