@@ -2,6 +2,12 @@
 * ![](background-grass_L.png)
 * ![](background-sky_L.png)
 * ![](background-tree1_L.png)
+# character
+* ![](charactor-idle1_L.png)
+* ![](charactor-idle1_noarm_L.png)
+* ![](charactor-idle1_arm_L.png)
+# enemies
+* ![](foreground-cattail1_L.png)
 # foregrounds
 ## platform
 * ![](foreground-platform_L.png)
@@ -12,6 +18,5 @@
 * ![](foreground-rock4_L.png)
 ## plants
 * ![](foreground-vine1_L.png)
-* ![](foreground-cattail1_L.png)
-## drops
+## seeds
 * ![](foreground-seeds1_L.png)
