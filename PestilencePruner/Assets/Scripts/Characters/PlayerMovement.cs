@@ -127,6 +127,13 @@ public class PlayerMovement : MonoBehaviour
                     DeattachHook();
                     state = SwingState.InAir;
                 }
+
+                else{
+                    
+                    //joint.connectedAnchor = hookPos;
+                    grappleLine.SetPosition(0, rb.position);
+                    grappleLine.SetPosition(1, hookPos);
+                }
             //     grappleLine.SetPosition(0, rb.position);
             //     if(Input.GetMouseButtonDown(0)) retracting = true;
 
