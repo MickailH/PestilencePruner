@@ -93,6 +93,8 @@ MonoBehaviour:
     animator: {fileID: 0}
     getHit: 0
   uprootable: 0
+  generateSeed: 1
+  seed: {fileID: 7929270249212979137, guid: 0ef2076c76e03bf47bfb06f1ab64d7d0, type: 3}
 --- !u!4 &1052236781576875576 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5129541569692361682, guid: 88caf20262c2d414ba7bfd50f11f2a56, type: 3}
