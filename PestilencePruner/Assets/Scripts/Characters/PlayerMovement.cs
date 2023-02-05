@@ -140,13 +140,12 @@ public class PlayerMovement : MonoBehaviour
         if(state == SwingState.Grappling) DeattachHook();
         state = SwingState.Walking;
     }
-    
     void OnTriggerEnter2D(Collider2D other){
-        print("hit");
-        if(other.CompareTag("Floor")){
-            if(state == SwingState.Grappling) DeattachHook();
-            state = SwingState.Walking;
-        }
+        // print("hit");
+        // if(other.CompareTag("Floor")){
+        //     if(state == SwingState.Grappling) DeattachHook();
+        //     state = SwingState.Walking;
+        // }
         if (other.CompareTag("Enemy"))
         {
             takeDamage();

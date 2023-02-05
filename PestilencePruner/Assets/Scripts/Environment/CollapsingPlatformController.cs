@@ -15,7 +15,7 @@ public class CollapsingPlatformController : PlatformController
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name.Equals("Character"))
+        if (other.gameObject.name.Equals("Player"))
         {
             Collider2D col = other.collider;
             Transform player = other.transform;

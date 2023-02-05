@@ -5,9 +5,9 @@ using UnityEngine;
 public class AI_3 : EnemyAI
 {
 void OnCollisionEnter2D(Collision2D otherCollision){
-    //print("AI_2 hit");
     Collider2D other = otherCollision.collider;
     if(other.CompareTag("Player")){
+        print("AI_3 hit");
         Transform player = other.transform;
 
         if(player.GetComponent<PlayerMovement>().state == SwingState.Grappling){

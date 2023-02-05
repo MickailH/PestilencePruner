@@ -5,9 +5,10 @@ using UnityEngine;
 public class AI_2 : EnemyAI
 {
 void OnCollisionEnter2D(Collision2D otherCollision){
-    //print("AI_2 hit");
+    
     Collider2D other = otherCollision.collider;
     if(other.CompareTag("Player")){
+        print("AI_2 hit");
         Transform player = other.transform;
 
         if(player.position.y - other.bounds.extents.y > transform.position.y + transform.GetComponent<Collider2D>().bounds.extents.y)
