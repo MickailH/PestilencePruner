@@ -23,16 +23,20 @@ public class Parameter
     //public float attackArea;
     public Animator animator;
     public bool getHit;
-
 }
 public class EnemyAI : MonoBehaviour
 {
 
     private IState currentState;
-    public Dictionary<StateType, IState> states = new Dictionary<StateType, IState>();
+    private Dictionary<StateType, IState> states = new Dictionary<StateType, IState>();
 
     public Parameter parameter;
+<<<<<<< Updated upstream
+=======
     public bool uprootable = false;
+    public bool generateSeed = true;
+    public GameObject seed;
+>>>>>>> Stashed changes
     void Start()
     {
         states.Add(StateType.Idle, new IdleState(this));
@@ -58,14 +62,24 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
+=======
     public void Whipped(){
-        if(uprootable) Uproot();
+        if (uprootable)
+        {
+            print("Ready to uproot");
+            Uproot();
+        }
     }
 
     public void Uproot(){
-        
+        print("Uproot");
+        Instantiate(seed, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+        Destroy(gameObject);
+
     }
 
+>>>>>>> Stashed changes
     public void TransitionState(StateType type)
     {
         if (currentState != null)
