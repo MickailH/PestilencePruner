@@ -7,6 +7,7 @@ TagManager:
   - Floor
   - Platform
   - Enemy
+  - AI2
   layers:
   - Default
   - TransparentFX

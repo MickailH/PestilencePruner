@@ -15,6 +15,8 @@ public class Parameter
     public float moveSpeed;
     public float chaseSpeed;
     public float idleTime;
+    public float KBpower = 100;
+    public float KBduration = 1;
     public Transform[] patrolPoints;
     public Transform[] chasePoints;
     public Transform target;
@@ -116,6 +118,14 @@ public class EnemyAI : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             parameter.target = null;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.name.Equals("Player"))
+        {
+            StartCoroutine(PlayerMovement.instance.Knockback(parameter.KBduration, parameter.KBpower, this.transform));
         }
     }
 
