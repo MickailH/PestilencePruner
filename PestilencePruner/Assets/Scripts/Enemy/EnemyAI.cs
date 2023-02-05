@@ -28,15 +28,12 @@ public class EnemyAI : MonoBehaviour
 {
 
     private IState currentState;
-    private Dictionary<StateType, IState> states = new Dictionary<StateType, IState>();
+    public Dictionary<StateType, IState> states = new Dictionary<StateType, IState>();
 
     public Parameter parameter;
-<<<<<<< Updated upstream
-=======
     public bool uprootable = false;
     public bool generateSeed = true;
     public GameObject seed;
->>>>>>> Stashed changes
     void Start()
     {
         states.Add(StateType.Idle, new IdleState(this));
@@ -62,8 +59,6 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream
-=======
     public void Whipped(){
         if (uprootable)
         {
@@ -79,7 +74,6 @@ public class EnemyAI : MonoBehaviour
 
     }
 
->>>>>>> Stashed changes
     public void TransitionState(StateType type)
     {
         if (currentState != null)
